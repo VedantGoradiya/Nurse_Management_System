@@ -27,7 +27,7 @@ const DataTable = ({
   columns,
   setOpen,
   setPageDetails,
-  totalPages
+  totalPages,
 }: DataTableCompProps) => {
   //State for the saving the pagination details
   const [paginationModel, setPaginationModel] = useState<GridPaginationModel>({
@@ -73,6 +73,12 @@ const DataTable = ({
           display: "flex",
           alignItems: "center",
           justifyContent: "center",
+        },
+        "& .MuiTablePagination-selectLabel": {
+          margin: "0",
+        },
+        "& .MuiTablePagination-displayedRows": {
+          margin: "0",
         },
       }}
       rows={rows}

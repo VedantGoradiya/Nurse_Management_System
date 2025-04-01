@@ -272,7 +272,9 @@ const Home = () => {
 
         //Setting the body for the API call by adding the ward id to the form data
         const body = {
-          ...formData,
+          firstName: formData.firstName.trim(),
+          lastName: formData.lastName.trim(),
+          email: formData.email.trim(),
           wardId: newWordId,
         };
 
@@ -400,34 +402,29 @@ const Home = () => {
     }
   };
 
-  //function to handle the page change of the table
-  const handlePageChange = (pageDetails: PaginationDetails): void => {
-    setPageDetails(pageDetails);
-  };
-
   const validateNurse = (): boolean => {
-    if (!validateString(formData.firstName)) {
+    if (!validateString(formData.firstName.trim())) {
       setSnackbarSeverity("error");
       setSnackbarMessage("First name is required");
       setOpenSnackbar(true);
       return false;
     }
 
-    if (!validateString(formData.lastName)) {
+    if (!validateString(formData.lastName.trim())) {
       setSnackbarSeverity("error");
       setSnackbarMessage("Last name is required");
       setOpenSnackbar(true);
       return false;
     }
 
-    if (!validateString(formData.email)) {
+    if (!validateString(formData.email.trim())) {
       setSnackbarSeverity("error");
       setSnackbarMessage("Email is required");
       setOpenSnackbar(true);
       return false;
     }
 
-    if (!validateString(formData.wardName)) {
+    if (!validateString(formData.wardName.trim())) {
       setSnackbarSeverity("error");
       setSnackbarMessage("Ward name is required");
       setOpenSnackbar(true);
@@ -456,7 +453,7 @@ const Home = () => {
             rows={rows}
             columns={columns}
             setOpen={setOpenModel}
-            setPageDetails={handlePageChange}
+            setPageDetails={setPageDetails}
             totalPages={totalPages}
           />
         </div>

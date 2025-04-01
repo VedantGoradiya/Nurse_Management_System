@@ -32,6 +32,7 @@ import Snackbar, { SnackbarCloseReason } from "@mui/material/Snackbar";
 import { WardAPI } from "../API/Ward-API";
 import { WardType, WardInputFormData } from "../types/ward.types";
 import AddIcon from "@mui/icons-material/Add";
+import { validateString } from "../utils/InputValidation";
 
 /**
  * BootstrapDialog component.
@@ -119,14 +120,6 @@ const Ward = () => {
           <IconButton onClick={() => handleDelete(params.row.id)} color="error">
             <DeleteIcon />
           </IconButton>
-          {/* <IconButton
-            onClick={() => {
-              setOpen(true);
-            }}
-            color="primary"
-          >
-            <AddIcon />
-          </IconButton> */}
         </>
       ),
     },
@@ -216,8 +209,12 @@ const Ward = () => {
     try {
       setOpenBackdrop(true);
       if (validateWard()) {
+        const body = {
+          wardName: formData.wardName.trim(),
+          wardColor: formData.wardColor,
+        };
         //Call the API to create the ward
-        const data = await WardAPI.createWard(formData);
+        const data = await WardAPI.createWard(body);
         if (data.relogin) {
           localStorage.removeItem("token");
           navigate("/login");
@@ -246,9 +243,15 @@ const Ward = () => {
   };
 
   const validateWard = (): boolean => {
-    if (formData.wardName === "" || formData.wardColor === "") {
+    if (!validateString(formData.wardName.trim())) {
       setSnackbarSeverity("error");
-      setSnackbarMessage("Ward name and color are required");
+      setSnackbarMessage("Ward name is required");
+      setOpenSnackbar(true);
+      return false;
+    }
+    if (!validateString(formData.wardColor.trim())) {
+      setSnackbarSeverity("error");
+      setSnackbarMessage("Ward color is required");
       setOpenSnackbar(true);
       return false;
     }
@@ -277,6 +280,19 @@ const Ward = () => {
     <div>
       {/* <DataTable rows={rows} columns={columns} setOpen={setOpen} /> */}
       <DataGrid
+        sx={{
+          "& .MuiDataGrid-cell": {
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+          },
+          "& .MuiTablePagination-selectLabel": {
+            margin: "0",
+          },
+          "& .MuiTablePagination-displayedRows": {
+            margin: "0",
+          },
+        }}
         rows={rows}
         columns={columns}
         initialState={{
