@@ -85,15 +85,17 @@ The frontend application will start on `http://localhost:5173`
 Nurse Management/
 ![Architecture](Resources/Repo.png)
 
-![Architecture](Resources/Architecture.png)
 
 ### Project Architecture
+
+![Architecture](Resources/Architecture.png)
 
 - This is the general architecture of the app.
 - Once the HTTP client makes a request, it reaches the application layer (Express app).
 - Through added middleware (e.g., logging incoming URLs, request bodies, and methods) or authentication middleware, the request is passed to the appropriate router.
 - Through the router, the data flows into the appropriate controller functions (based on the API endpoint).
 - Once the schema is validated, the data is saved into the database, and a response is sent back to the HTTP client.
+
 
 ### User Flow Chart
 
