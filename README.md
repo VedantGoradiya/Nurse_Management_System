@@ -103,13 +103,13 @@ Nurse Management/
 
 - This flowchart helps users sign up or sign in based on the API endpoint.
 
-## For SignUp
+#### For SignUp
 
 - The body schema is validated. If validation fails, an error status is returned.
 - After validation, a check is performed to see if the given email already exists.
 - If the email does not exist, a new user is created, and the given password is hashed using a secret key.
 
-## For SignIn
+#### For SignIn
 
 - The body schema is validated.
 - After validation, a check is performed to see if the user already has an account with the given email.
@@ -124,7 +124,7 @@ Nurse Management/
 
 - This flowchart helps users create or delete wards based on the schema.
 
-## Route Details
+#### Route Details
 
 - `GET /api/wards` - Retrieves the list of all wards.
 - `POST /api/wards` - Creates a single ward.
@@ -139,7 +139,7 @@ Nurse Management/
 
 - This flowchart helps users create, read, update, or delete nurses based on the schema.
 
-## Route Details
+#### Route Details
 
 - `GET /api/nurses` - Retrieves the list of all nurses.
 - `POST /api/nurses` - Creates a single nurse.
@@ -148,3 +148,6 @@ Nurse Management/
 - `GET /api/nurses/:id` - Retrieves a single nurse based on the given ID.
 - `GET /api/nurses/?` - Filters nurses based on `fullName` and `wardName`.
 - `POST /api/nurses/bulk` - Creates nurses in bulk.
+
+
+API Documentation on POSTMAN - [Click Here](https://documenter.getpostman.com/view/43135612/2sB2cRCPyJ)
