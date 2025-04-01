@@ -5,9 +5,6 @@
 
 import { WardInputFormData } from "../types/ward.types";
 
-const BASE_URL = import.meta.env.VITE_BASE_URL;
-const token = localStorage.getItem("token");
-
 export const WardAPI = {
   /**
    * Gets all wards from the backend.
@@ -20,7 +17,8 @@ export const WardAPI = {
   getAllWards: async () => {
     try {
       //Getting the base url and token from the environment variables and local storage
-
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
+      const token = localStorage.getItem("token");
       const response = await fetch(`${BASE_URL}/api/wards`, {
         method: "GET",
         headers: {
@@ -49,7 +47,9 @@ export const WardAPI = {
    */
   deleteWard: async (id: number) => {
     try {
-      //G etting the base url and token from the environment variables and local storage
+      //Getting the base url and token from the environment variables and local storage
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
+      const token = localStorage.getItem("token");
       const response = await fetch(`${BASE_URL}/api/wards/${id}`, {
         method: "DELETE",
         headers: {
@@ -78,6 +78,8 @@ export const WardAPI = {
   createWard: async (ward: WardInputFormData) => {
     try {
       //Getting the base url and token from the environment variables and local storage
+      const BASE_URL = import.meta.env.VITE_BASE_URL;
+      const token = localStorage.getItem("token");
       const response = await fetch(`${BASE_URL}/api/wards`, {
         method: "POST",
         headers: {
