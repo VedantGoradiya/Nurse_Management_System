@@ -83,33 +83,19 @@ The frontend application will start on `http://localhost:5173`
 ## Project Structure
 
 Nurse Management/
-├── Backend/
-│ ├── src/
-│ │ ├── config/ # Configuration files (database etc.)
-│ │ ├── controllers/ # Request handlers and business logic
-│ │ ├── middleware/ # Custom middleware (auth, error, etc.)
-│ │ ├── models/ # Database models and schemas
-│ │ ├── routes/ # API route definitions
-│ │ └── utils/ # Helper functions and utilities
-│ ├── package.json # Backend dependencies and scripts
-│ └── tsconfig.json # TypeScript configuration
-├── Frontend/
-│ ├── src/
-│ │ ├── components/ # Reusable UI components
-│ │ ├── pages/ # Page components and routes
-│ │ ├── services/ # API service functions
-│ │ └── utils/ # Helper functions and constants
-│ ├── package.json # Frontend dependencies and scripts
-│ └── vite.config.ts # Vite configuration
-└── README.md
+![Architecture](Resources/Repo.png)
 
 ![Architecture](Resources/Architecture.png)
+
+### Project Architecture
 
 - This is the general architecture of the app.
 - Once the HTTP client makes a request, it reaches the application layer (Express app).
 - Through added middleware (e.g., logging incoming URLs, request bodies, and methods) or authentication middleware, the request is passed to the appropriate router.
 - Through the router, the data flows into the appropriate controller functions (based on the API endpoint).
 - Once the schema is validated, the data is saved into the database, and a response is sent back to the HTTP client.
+
+### User Flow Chart
 
 ![User Flow Chart](Resources/User_Flow_Chart.png)
 
@@ -130,6 +116,8 @@ Nurse Management/
 
 ---
 
+### Ward Flow Chart
+
 ![Ward Flow Chart](Resources/Ward_Flow_Chart.png)
 
 - This flowchart helps users create or delete wards based on the schema.
@@ -142,6 +130,8 @@ Nurse Management/
 - `POST /api/wards/bulk` - Creates wards in bulk.
 
 ---
+
+### Nurse Flow Chart
 
 ![Nurse Flow Chart](Resources/Nurse_Flow_Chart.png)
 
